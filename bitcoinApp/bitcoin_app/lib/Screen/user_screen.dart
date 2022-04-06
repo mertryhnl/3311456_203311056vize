@@ -4,55 +4,59 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class UserScreen extends StatelessWidget {
+class UserScreen extends StatefulWidget {
   const UserScreen({Key? key}) : super(key: key);
 
+  @override
+  State<UserScreen> createState() => _UserScreenState();
+}
+
+class _UserScreenState extends State<UserScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('kullanıcı ekranı')),
-      body: Center(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Card(
-                elevation: 8,
-                child: Column(children: <Widget>[
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Column(
+          children: <Widget>[
+            Card(
+              elevation: 8,
+              child: Column(
+                children: <Widget>[
                   takeUserDetail(),
-                ]),
+                ],
               ),
-              ListView.builder(
-                shrinkWrap: true,
-                itemCount: DataControl.btcs.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return Card(
-                    elevation: 8,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20)),
-                    color: Colors.black26,
-                    child: Column(
-                      children: [
-                        takeImage(index),
-                        Text(DataControl.btcs[index].name +
-                            " " +
-                            DataControl.btcs[index].price),
-                      ],
-                    ),
-                  );
-                },
-              ),
-              SizedBox(
-                height: 50,
-                child: Card(
-                    elevation: 8,
-                    color: Colors.amber,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20)),
-                    child: Center(
-                        child: Text(DataControl.btcToplamfiyat().toString()))),
-              )
-            ],
-          ),
+            ),
+            ListView.builder(
+              scrollDirection: Axis.vertical,
+              shrinkWrap: true,
+              physics: ScrollPhysics(),
+              itemCount: DataControl.btcs.length,
+              itemBuilder: (BuildContext context, int index) {
+                return Card(
+                  elevation: 8,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20)),
+                  color: Colors.black26,
+                  child: ListTile(
+                      leading: takeImage(index),
+                      title: Text(DataControl.btcs[index].name),
+                      subtitle: Text(DataControl.btcs[index].price)),
+                );
+              },
+            ),
+            SizedBox(
+              height: 50,
+              child: Card(
+                  elevation: 8,
+                  color: Colors.amber,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20)),
+                  child: Center(
+                      child: Text(DataControl.btcToplamfiyat().toString()))),
+            )
+          ],
         ),
       ),
     );
