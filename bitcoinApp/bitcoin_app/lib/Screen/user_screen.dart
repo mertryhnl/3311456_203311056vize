@@ -18,9 +18,7 @@ class UserScreen extends StatelessWidget {
               Card(
                 elevation: 8,
                 child: Column(children: <Widget>[
-                  Text(userDetail.first.name),
-                  Text(userDetail.first.birthPlace),
-                  Text(userDetail.first.birthDate),
+                  takeUserDetail(),
                 ]),
               ),
               ListView.builder(
@@ -58,6 +56,22 @@ class UserScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Widget takeUserDetail() {
+    if (userDetail.isNotEmpty) {
+      return Column(
+        children: [
+          Text(userDetail.first.birthPlace),
+          Text(userDetail.first.birthDate),
+          Text(userDetail.first.name)
+        ],
+      );
+    } else if (userDetail.isEmpty) {
+      return const Center(child: Text("KULLANICI BİLGİSİ BULUNAMADI"));
+    } else {
+      return Container();
+    }
   }
 
   Widget takeImage(int index) {

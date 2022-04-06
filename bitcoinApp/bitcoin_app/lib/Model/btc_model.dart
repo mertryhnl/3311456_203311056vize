@@ -23,7 +23,7 @@ class BtcModel {
     required this.numPairs,
     required this.numPairsUnmapped,
     required this.firstCandle,
-    required this.firstTrade,
+    //required this.firstTrade,
     required this.firstOrderBook,
     required this.rank,
     required this.rankDelta,
@@ -53,7 +53,7 @@ class BtcModel {
   final String numPairs;
   final String numPairsUnmapped;
   final DateTime firstCandle;
-  final DateTime firstTrade;
+  //final DateTime firstTrade;
   final DateTime firstOrderBook;
   final String rank;
   final String rankDelta;
@@ -83,7 +83,7 @@ class BtcModel {
         numPairs: json["num_pairs"],
         numPairsUnmapped: json["num_pairs_unmapped"],
         firstCandle: DateTime.parse(json["first_candle"]),
-        firstTrade: DateTime.parse(json["first_trade"]),
+        //firstTrade: DateTime.parse(json["first_trade"]),
         firstOrderBook: DateTime.parse(json["first_order_book"]),
         rank: json["rank"],
         rankDelta: json["rank_delta"],
@@ -114,7 +114,7 @@ class BtcModel {
         "num_pairs": numPairs,
         "num_pairs_unmapped": numPairsUnmapped,
         "first_candle": firstCandle.toIso8601String(),
-        "first_trade": firstTrade.toIso8601String(),
+        //"first_trade": firstTrade.toIso8601String(),
         "first_order_book": firstOrderBook.toIso8601String(),
         "rank": rank,
         "rank_delta": rankDelta,

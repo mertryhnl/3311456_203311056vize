@@ -130,14 +130,6 @@ class CoinDetail extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    "First Trade: " + btc.firstTrade.toString(),
-                    style: const TextStyle(
-                        fontSize: 16, fontWeight: FontWeight.w600),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
                     "First Order Book: " + btc.firstOrderBook.toString(),
                     style: const TextStyle(
                         fontSize: 16, fontWeight: FontWeight.w600),
